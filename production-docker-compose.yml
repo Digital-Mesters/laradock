@@ -368,7 +368,7 @@ services:
       volumes:
         - ${DATA_PATH_HOST}/postgres:/var/lib/postgresql/data
         - ${POSTGRES_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
-      ports:
+      # ports:
         #- "${POSTGRES_PORT}:5432"
       environment:
         - POSTGRES_DB=${POSTGRES_DB}
@@ -396,7 +396,7 @@ services:
 ### MongoDB ##############################################
     mongo:
       build: ./mongo
-      ports:
+      # ports:
         #- "${MONGODB_PORT}:27017"
       environment:
         - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
@@ -413,7 +413,7 @@ services:
       volumes:
         - ${DATA_PATH_HOST}/redis:/data
       command: --requirepass ${REDIS_PASSWORD}
-      ports:
+      # ports:
         #- "${REDIS_PORT}:6379"
       networks:
         - backend
@@ -421,7 +421,7 @@ services:
 ### Redis Cluster ##########################################
     redis-cluster:
       build: ./redis-cluster
-      ports:
+      # ports:
        # - "${REDIS_CLUSTER_PORT_RANGE}:7000-7005"
       networks:
         - backend
@@ -431,7 +431,7 @@ services:
       build: ./memcached
       volumes:
         - ${DATA_PATH_HOST}/memcached:/var/lib/memcached
-      ports:
+      # ports:
         #- "${MEMCACHED_HOST_PORT}:11211"
       depends_on:
         - php-fpm
@@ -441,7 +441,7 @@ services:
 ### RabbitMQ #############################################
     rabbitmq:
       build: ./rabbitmq
-      ports:
+      # ports:
         # - "${RABBITMQ_NODE_HOST_PORT}:5672"
         # - "${RABBITMQ_MANAGEMENT_HTTP_HOST_PORT}:15672"
         # - "${RABBITMQ_MANAGEMENT_HTTPS_HOST_PORT}:15671"
